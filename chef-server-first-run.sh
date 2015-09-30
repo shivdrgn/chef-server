@@ -23,8 +23,6 @@ sleep 5m
 echo "Copying pem files from container and placing in knife directory"
 echo
 cp /var/lib/docker/btrfs/subvolumes/$CONTAINER/etc/chef/*.pem /home/tim/.chef/
-chown tim:tim /home/tim/.chef/*.pem
-chmod 600 /home/tim/.chef/*.pem
 
 
 echo "Fetching SSL certificate from chef server using knife."
