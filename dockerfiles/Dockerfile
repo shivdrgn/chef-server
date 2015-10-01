@@ -16,5 +16,5 @@ CMD ["/run.sh"]
 EXPOSE 443
 EXPOSE 22
 
-ENTRYPOINT [ "-d", "--name=chef-server", -h "chef-server" ]
+ENTRYPOINT "-d", "--name=chef-server", -h "chef-server"
 
