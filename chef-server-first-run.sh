@@ -1,18 +1,19 @@
 #!/bin/bash
 
-CONTAINER=$(docker run -d shivdrgn/chef-server)
+CONTAINER=$(docker run -d shivdrgn/$CONTAINERHOSTNAME)
 CONTAINERIP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' ${CONTAINER})
+CONTAINERHOSTNAME=$(docker inspect --format '{{ .Config.Hostname }}' ${CONTAINER})
 echo "Container ID is $CONTAINER"
 echo "Container IP is $CONTAINERIP"
 echo
 
-if egrep -q "^[^\n]+$HNAME" /etc/hosts; then
-	sed  -ri "s/^[^\n]+$HNAME/$CONTAINERIP\t$HNAME/" /etc/hosts
+if egrep -q "^[^\n]+$CONTAINERHOSTNAME" /etc/hosts; then
+	sed  -ri "s/^[^\n]+$CONTAINERHOSTNAME/$CONTAINERIP\t$CONTAINERHOSTNAME/" /etc/hosts
 else
-	echo "$CONTAINERIP  $HNAME" >> /etc/hosts
+	echo "$CONTAINERIP  $CONTAINERHOSTNAME" >> /etc/hosts
 fi
 
-echo "/etc/hosts updated with $CONTAINERIP  $HNAME"
+echo "/etc/hosts updated with $CONTAINERIP  $CONTAINERHOSTNAME"
 echo
 echo "Sleeping 5 minutes to wait for container to spin up."
 echo
