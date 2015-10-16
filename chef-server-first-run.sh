@@ -6,13 +6,13 @@ echo "Container ID is $CONTAINER"
 echo "Container IP is $CONTAINERIP"
 echo
 
-if egrep -q "^[^\n]+$HNAME" /etc/hosts; then
-	sed  -ri "s/^[^\n]+$HNAME/$CONTAINERIP\t$HNAME/" /etc/hosts
+if egrep -q "^[^\n]+chef-server" /etc/hosts; then
+	sed  -ri "s/^[^\n]+chef-server/$CONTAINERIP\tchef-server/" /etc/hosts
 else
-	echo "$CONTAINERIP  $HNAME" >> /etc/hosts
+	echo "$CONTAINERIP  chef-server" >> /etc/hosts
 fi
 
-echo "/etc/hosts updated with $CONTAINERIP  $HNAME"
+echo "/etc/hosts updated with $CONTAINERIP  chef-server"
 echo
 echo "Sleeping 5 minutes to wait for container to spin up."
 echo
