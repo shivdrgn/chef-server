@@ -1,8 +1,6 @@
 #!/bin/bash
 
-HNAME=$1
-
-CONTAINER=$(docker run -d -h $HNAME --name $HNAME shivdrgn/chef-server)
+CONTAINER=$(docker run -d shivdrgn/chef-server)
 CONTAINERIP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' ${CONTAINER})
 echo "Container ID is $CONTAINER"
 echo "Container IP is $CONTAINERIP"
