@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CONTAINER=$(docker run -d shivdrgn/$CONTAINERHOSTNAME)
+CONTAINER=$(docker run -d shivdrgn/chef-server)
 CONTAINERIP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' ${CONTAINER})
 CONTAINERHOSTNAME=$(docker inspect --format '{{ .Config.Hostname }}' ${CONTAINER})
 echo "Container ID is $CONTAINER"
