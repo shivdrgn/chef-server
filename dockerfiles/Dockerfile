@@ -13,7 +13,4 @@ ADD ./run.sh /run.sh
 RUN chmod 700 /run.sh
 CMD ["/run.sh"]
 
-EXPOSE 443
-EXPOSE 22
-
 ENTRYPOINT [ "-d", "--name=chef-server", -h "chef-server" ]
