@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+	chef-server:
+		build: .
+		ports:
+			- "8181:443"
+			- "2222:22"
+	chef-client:
+		image: tutum/ubuntu
+		ports:
+			- "222:22"
